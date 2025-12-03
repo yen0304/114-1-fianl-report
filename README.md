@@ -59,7 +59,7 @@
 ```
 114-1-final-report/
 ├── population_analysis.ipynb          # 主要分析筆記本
-├── 程式用-縣市人口按性別及五齡組 - 工作表1.csv  # 原始資料
+├── 程式用-縣市人口按性別及五齡組.csv  # 原始資料
 ├── fonts/                            # 中文字型資料夾
 │   └── Noto_Sans_TC/                # Noto Sans TC 字型家族
 │       ├── static/                  # 靜態字型檔案
@@ -90,7 +90,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 cd "/Users/yen/Desktop/統計/114-1-final-report"
 ```
 
-2. 啟動 Jupyter Lab：
+2. 安裝套件
+```bash
+uv sync
+```
+
+3. 啟動 Jupyter Lab：
 ```bash
 uv run jupyter lab
 ```
@@ -100,7 +105,7 @@ uv run jupyter lab
 uv run jupyter notebook
 ```
 
-3. 在瀏覽器中開啟 `population_analysis.ipynb`
+4. 在瀏覽器中開啟 `population_analysis.ipynb`
 
 ## 分析內容
 
@@ -216,6 +221,11 @@ uv run python test_chinese_font.py
 ## 作者
 
 統計學期末報告專案
+
+
+## 資料來源
+長照ABC據點:https://data.gov.tw/dataset/88270
+104_113年人口數按三階段年齡及性別:https://gis.ris.gov.tw/dashboard.html?key=B02 (https://gis.ris.gov.tw/data-popudata/statistic/B02/GIS?containMainArea=true&d5C3Fr=104&d5C2Fr=01&d5C3To=113&d5C2To=12&cct8code=00000000)
 
 ## 更新日期
 
