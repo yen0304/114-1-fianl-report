@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8a82e40a50c55360ef6611ceac718b03 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; right: 50px; width: 220px; height: 180px; 
+                background-color: white; z-index:9999; font-size:12px;
+                border:2px solid grey; border-radius: 5px; padding: 10px;
+                font-family: 'Noto Sans TC', sans-serif;">
+        <h4 style="margin: 0 0 10px 0;">長照據點密度</h4>
+        <p style="margin: 5px 0;">
+            <i style="background: green; width: 20px; height: 20px; 
+               float: left; margin-right: 8px; opacity: 0.6;"></i>
+            充足 (高密度)
+        </p>
+        <p style="margin: 5px 0;">
+            <i style="background: orange; width: 20px; height: 20px; 
+               float: left; margin-right: 8px; opacity: 0.6;"></i>
+            中等
+        </p>
+        <p style="margin: 5px 0;">
+            <i style="background: red; width: 20px; height: 20px; 
+               float: left; margin-right: 8px; opacity: 0.6;"></i>
+            不足 (低密度)
+        </p>
+        <hr style="margin: 10px 0;">
+        <p style="margin: 5px 0; font-size: 10px;">
+            ● 圓圈大小代表總據點數<br>
+            ● 顏色代表每千位高齡人口據點數
+        </p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_8a82e40a50c55360ef6611ceac718b03" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8a82e40a50c55360ef6611ceac718b03 = L.map(
+                "map_8a82e40a50c55360ef6611ceac718b03",
+                {
+                    center: [23.5, 121.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ca4dcdde1622ee448fdf46396698e63d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ca4dcdde1622ee448fdf46396698e63d.addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var circle_marker_5b58cea957fae8ade19d83effbd444e8 = L.circleMarker(
+                [25.033, 121.5654],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_0c581ea2a2ad98871741e8fc1b490931 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_042eb7277edd16ce4d68d02196abd962 = $(`<div id="html_042eb7277edd16ce4d68d02196abd962" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台北市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">2455</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">107</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2077</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">271</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">574,458</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">4.27</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_0c581ea2a2ad98871741e8fc1b490931.setContent(html_042eb7277edd16ce4d68d02196abd962);
+            
+        
+
+        circle_marker_5b58cea957fae8ade19d83effbd444e8.bindPopup(popup_0c581ea2a2ad98871741e8fc1b490931)
+        ;
+
+        
+    
+    
+            var marker_68c8eea736b8f768dd7d968edb34a98d = L.marker(
+                [25.033, 121.5654],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_55af96d40359f23b5cddf756f03fa7ab = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u5317\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_68c8eea736b8f768dd7d968edb34a98d.setIcon(div_icon_55af96d40359f23b5cddf756f03fa7ab);
+            
+    
+            var circle_marker_701b4e39fc008d80e317b098a05bebf1 = L.circleMarker(
+                [25.012, 121.4659],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_5783ec0fd82b28e83280abc5a28911e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_59b24c934a94c762763946795ff991a6 = $(`<div id="html_59b24c934a94c762763946795ff991a6" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新北市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">2892</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">154</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2245</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">493</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">768,492</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">3.76</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_5783ec0fd82b28e83280abc5a28911e0.setContent(html_59b24c934a94c762763946795ff991a6);
+            
+        
+
+        circle_marker_701b4e39fc008d80e317b098a05bebf1.bindPopup(popup_5783ec0fd82b28e83280abc5a28911e0)
+        ;
+
+        
+    
+    
+            var marker_0f6f46fd9e25c96254ce02f1e0b94d31 = L.marker(
+                [25.012, 121.4659],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_9107d1066a49a1c3ee0b1b3ccbf1db76 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u65b0\u5317\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_0f6f46fd9e25c96254ce02f1e0b94d31.setIcon(div_icon_9107d1066a49a1c3ee0b1b3ccbf1db76);
+            
+    
+            var circle_marker_1c79121dcc9ba1c90acbc62eb7f2e60d = L.circleMarker(
+                [24.9937, 121.301],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_cfe0f78078c5e2b2fa9854cad0f9fcf3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_56f03a84d14584ff2c927d5439cdefcf = $(`<div id="html_56f03a84d14584ff2c927d5439cdefcf" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">桃園市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1865</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">76</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1454</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">335</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">371,475</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.02</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_cfe0f78078c5e2b2fa9854cad0f9fcf3.setContent(html_56f03a84d14584ff2c927d5439cdefcf);
+            
+        
+
+        circle_marker_1c79121dcc9ba1c90acbc62eb7f2e60d.bindPopup(popup_cfe0f78078c5e2b2fa9854cad0f9fcf3)
+        ;
+
+        
+    
+    
+            var marker_edf6d04253fe60d739a93f2a7c06fd4c = L.marker(
+                [24.9937, 121.301],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_ff58b611e84ce0165a87240a195cd12c = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u6843\u5712\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_edf6d04253fe60d739a93f2a7c06fd4c.setIcon(div_icon_ff58b611e84ce0165a87240a195cd12c);
+            
+    
+            var circle_marker_59bb8542611472cf34f9a8545cff18a5 = L.circleMarker(
+                [24.1477, 120.6736],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_93a1158055042b4f74aca8c864339bd1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd14989647b13764150a98930e7f32e1 = $(`<div id="html_bd14989647b13764150a98930e7f32e1" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台中市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">3372</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">121</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2880</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">371</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">474,248</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.11</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_93a1158055042b4f74aca8c864339bd1.setContent(html_bd14989647b13764150a98930e7f32e1);
+            
+        
+
+        circle_marker_59bb8542611472cf34f9a8545cff18a5.bindPopup(popup_93a1158055042b4f74aca8c864339bd1)
+        ;
+
+        
+    
+    
+            var marker_62a8340138d349aa0888dcd7edb383ec = L.marker(
+                [24.1477, 120.6736],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_fc3ead9d7820a6fd74926f794aaea1b2 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u4e2d\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_62a8340138d349aa0888dcd7edb383ec.setIcon(div_icon_fc3ead9d7820a6fd74926f794aaea1b2);
+            
+    
+            var circle_marker_82a341ae2b4f0fa2f5409ecc093cccd8 = L.circleMarker(
+                [22.9998, 120.2269],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_5e269ab1f4df0d9e6661a6085c2a9141 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_98baf6b8dccfd6ab8ac73d5cbccf23ed = $(`<div id="html_98baf6b8dccfd6ab8ac73d5cbccf23ed" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台南市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1942</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">57</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1686</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">199</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">364,115</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.33</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_5e269ab1f4df0d9e6661a6085c2a9141.setContent(html_98baf6b8dccfd6ab8ac73d5cbccf23ed);
+            
+        
+
+        circle_marker_82a341ae2b4f0fa2f5409ecc093cccd8.bindPopup(popup_5e269ab1f4df0d9e6661a6085c2a9141)
+        ;
+
+        
+    
+    
+            var marker_c87a2bbeef3fbf31a64551fe9f63c4a5 = L.marker(
+                [22.9998, 120.2269],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_918618509402e7bd792d8c263d086e55 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u5357\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_c87a2bbeef3fbf31a64551fe9f63c4a5.setIcon(div_icon_918618509402e7bd792d8c263d086e55);
+            
+    
+            var circle_marker_f37c0fe20a28309098e4d449874417b9 = L.circleMarker(
+                [22.6273, 120.3014],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_62771efb009ca28247218e4d2f23d216 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_35e341de4020604846f98b7487706550 = $(`<div id="html_35e341de4020604846f98b7487706550" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">高雄市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">3999</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">82</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">3400</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">517</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">544,267</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.35</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_62771efb009ca28247218e4d2f23d216.setContent(html_35e341de4020604846f98b7487706550);
+            
+        
+
+        circle_marker_f37c0fe20a28309098e4d449874417b9.bindPopup(popup_62771efb009ca28247218e4d2f23d216)
+        ;
+
+        
+    
+    
+            var marker_f0ac1d0fb6eace176d5dfe940b5ab5c4 = L.marker(
+                [22.6273, 120.3014],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_ff61dbd62ff3234f2bedb211dfebf6ee = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u9ad8\u96c4\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_f0ac1d0fb6eace176d5dfe940b5ab5c4.setIcon(div_icon_ff61dbd62ff3234f2bedb211dfebf6ee);
+            
+    
+            var circle_marker_302eecc63262c1b1c097476c29cf99e0 = L.circleMarker(
+                [25.1276, 121.7392],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_3ddf18e68a6eced89df7b1e34e2d4ac5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_70b65a276bfee41ef227839f34fcec49 = $(`<div id="html_70b65a276bfee41ef227839f34fcec49" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">基隆市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">332</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">12</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">259</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">61</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">76,844</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">4.32</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_3ddf18e68a6eced89df7b1e34e2d4ac5.setContent(html_70b65a276bfee41ef227839f34fcec49);
+            
+        
+
+        circle_marker_302eecc63262c1b1c097476c29cf99e0.bindPopup(popup_3ddf18e68a6eced89df7b1e34e2d4ac5)
+        ;
+
+        
+    
+    
+            var marker_df2b7300d763f1dd100a5edf7528a0d1 = L.marker(
+                [25.1276, 121.7392],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_a31954cfb8f6e4b6c5539de3f5c6571a = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u57fa\u9686\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_df2b7300d763f1dd100a5edf7528a0d1.setIcon(div_icon_a31954cfb8f6e4b6c5539de3f5c6571a);
+            
+    
+            var circle_marker_ca62870eddade1e24f64aa91d9ac99e8 = L.circleMarker(
+                [24.8138, 120.9675],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_9c87da87b0f738d933e81a7d81149bba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_97541df2e42b47553dc82dbfa0ee8ad1 = $(`<div id="html_97541df2e42b47553dc82dbfa0ee8ad1" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新竹市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">561</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">22</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">474</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">65</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">70,383</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_9c87da87b0f738d933e81a7d81149bba.setContent(html_97541df2e42b47553dc82dbfa0ee8ad1);
+            
+        
+
+        circle_marker_ca62870eddade1e24f64aa91d9ac99e8.bindPopup(popup_9c87da87b0f738d933e81a7d81149bba)
+        ;
+
+        
+    
+    
+            var marker_d36641e3eaac4295cc5721a05d696716 = L.marker(
+                [24.8138, 120.9675],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_1ca98d5fc9db6a8973d5befeafcab42d = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u65b0\u7af9\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_d36641e3eaac4295cc5721a05d696716.setIcon(div_icon_1ca98d5fc9db6a8973d5befeafcab42d);
+            
+    
+            var circle_marker_84a5241f2ac9ebb5142728efc701aa15 = L.circleMarker(
+                [24.8387, 121.0177],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_f977223db9414b14d1e7c93d917b6a0f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d98e98e64fd31748a498cd4b256ce7db = $(`<div id="html_d98e98e64fd31748a498cd4b256ce7db" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新竹縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">772</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">24</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">620</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">128</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">86,088</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">8.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_f977223db9414b14d1e7c93d917b6a0f.setContent(html_d98e98e64fd31748a498cd4b256ce7db);
+            
+        
+
+        circle_marker_84a5241f2ac9ebb5142728efc701aa15.bindPopup(popup_f977223db9414b14d1e7c93d917b6a0f)
+        ;
+
+        
+    
+    
+            var marker_5f12c8357be4ad3def5e6fc7121e0345 = L.marker(
+                [24.8387, 121.0177],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_ea9fba54bc57195fc74e0ce333016d60 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u65b0\u7af9\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_5f12c8357be4ad3def5e6fc7121e0345.setIcon(div_icon_ea9fba54bc57195fc74e0ce333016d60);
+            
+    
+            var circle_marker_05ccb3f4844478a95be99aa198c6a6ab = L.circleMarker(
+                [24.5602, 120.8214],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_984ca22dd642933274bb8a58b304bdc1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_71d60bbf0391b8ec4154facd0efee8af = $(`<div id="html_71d60bbf0391b8ec4154facd0efee8af" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">苗栗縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">589</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">70</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">401</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">118</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">104,168</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.65</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_984ca22dd642933274bb8a58b304bdc1.setContent(html_71d60bbf0391b8ec4154facd0efee8af);
+            
+        
+
+        circle_marker_05ccb3f4844478a95be99aa198c6a6ab.bindPopup(popup_984ca22dd642933274bb8a58b304bdc1)
+        ;
+
+        
+    
+    
+            var marker_04b3e2726daa2a5a565208cece5dfa0c = L.marker(
+                [24.5602, 120.8214],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_d0a180c71bf9c2a70dc52f5d5e62995e = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u82d7\u6817\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_04b3e2726daa2a5a565208cece5dfa0c.setIcon(div_icon_d0a180c71bf9c2a70dc52f5d5e62995e);
+            
+    
+            var circle_marker_de2248b29c4423db890f0c617a19b21e = L.circleMarker(
+                [24.0518, 120.5161],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_6c739404d9258a954291ca29fa125ccf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dbcc4f863a7005b62fbebebd7dbf3849 = $(`<div id="html_dbcc4f863a7005b62fbebebd7dbf3849" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">彰化縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1426</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">17</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1066</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">343</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">238,924</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6c739404d9258a954291ca29fa125ccf.setContent(html_dbcc4f863a7005b62fbebebd7dbf3849);
+            
+        
+
+        circle_marker_de2248b29c4423db890f0c617a19b21e.bindPopup(popup_6c739404d9258a954291ca29fa125ccf)
+        ;
+
+        
+    
+    
+            var marker_1be25e5574af3ff2f52ffac5f75de0ce = L.marker(
+                [24.0518, 120.5161],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_9dc10168231071df2087b9e2156591b2 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5f70\u5316\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_1be25e5574af3ff2f52ffac5f75de0ce.setIcon(div_icon_9dc10168231071df2087b9e2156591b2);
+            
+    
+            var circle_marker_f153120fe9b999ba220fd1162d7dfc50 = L.circleMarker(
+                [23.9609, 120.9719],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_64ce6353fa2313b5c8a46e6cb70c9c02 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_93c9a18a2c469358a10d0ce45e0fde40 = $(`<div id="html_93c9a18a2c469358a10d0ce45e0fde40" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">南投縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1099</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">23</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">928</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">148</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">102,680</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">10.70</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_64ce6353fa2313b5c8a46e6cb70c9c02.setContent(html_93c9a18a2c469358a10d0ce45e0fde40);
+            
+        
+
+        circle_marker_f153120fe9b999ba220fd1162d7dfc50.bindPopup(popup_64ce6353fa2313b5c8a46e6cb70c9c02)
+        ;
+
+        
+    
+    
+            var marker_1b0e134233d9cc4442d98a8bc64f6540 = L.marker(
+                [23.9609, 120.9719],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_2516722733ff4bcf8b81d175107ce12f = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5357\u6295\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_1b0e134233d9cc4442d98a8bc64f6540.setIcon(div_icon_2516722733ff4bcf8b81d175107ce12f);
+            
+    
+            var circle_marker_618696ba9d9c3891ef5be6b102f44633 = L.circleMarker(
+                [23.7092, 120.4313],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_a06b9079e40bf63d740d5459bec73c55 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e7f98a5aad3c52e272d246cfdc94cb3d = $(`<div id="html_e7f98a5aad3c52e272d246cfdc94cb3d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">雲林縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">746</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">36</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">576</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">134</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">138,929</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.37</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_a06b9079e40bf63d740d5459bec73c55.setContent(html_e7f98a5aad3c52e272d246cfdc94cb3d);
+            
+        
+
+        circle_marker_618696ba9d9c3891ef5be6b102f44633.bindPopup(popup_a06b9079e40bf63d740d5459bec73c55)
+        ;
+
+        
+    
+    
+            var marker_d676c798a23a03f729555ba62f3b4153 = L.marker(
+                [23.7092, 120.4313],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_81cb564282bf28d65ae1d736f9a95b34 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u96f2\u6797\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_d676c798a23a03f729555ba62f3b4153.setIcon(div_icon_81cb564282bf28d65ae1d736f9a95b34);
+            
+    
+            var circle_marker_2c190ca8afd4f3dcf596afbe80a18253 = L.circleMarker(
+                [23.4801, 120.4491],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_93690c66d7e26c04a2b5a174d7bf4c57 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ce921473920d441f09ce046f49b6071f = $(`<div id="html_ce921473920d441f09ce046f49b6071f" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">嘉義市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">353</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">15</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">279</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">59</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">50,101</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.05</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_93690c66d7e26c04a2b5a174d7bf4c57.setContent(html_ce921473920d441f09ce046f49b6071f);
+            
+        
+
+        circle_marker_2c190ca8afd4f3dcf596afbe80a18253.bindPopup(popup_93690c66d7e26c04a2b5a174d7bf4c57)
+        ;
+
+        
+    
+    
+            var marker_2dd98b32714cea25da41cfefe84b780c = L.marker(
+                [23.4801, 120.4491],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_20b021302cfed8fa3b35215431d0789e = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5609\u7fa9\u5e02\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_2dd98b32714cea25da41cfefe84b780c.setIcon(div_icon_20b021302cfed8fa3b35215431d0789e);
+            
+    
+            var circle_marker_c6ffae404e71725fe9f2ec58a3f830a4 = L.circleMarker(
+                [23.4518, 120.2554],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_f0886447319f6ed756d6820dfa0495ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1be1c749297ad6af8995a40c31e14d91 = $(`<div id="html_1be1c749297ad6af8995a40c31e14d91" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">嘉義縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">752</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">18</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">485</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">249</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">111,064</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">6.77</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_f0886447319f6ed756d6820dfa0495ee.setContent(html_1be1c749297ad6af8995a40c31e14d91);
+            
+        
+
+        circle_marker_c6ffae404e71725fe9f2ec58a3f830a4.bindPopup(popup_f0886447319f6ed756d6820dfa0495ee)
+        ;
+
+        
+    
+    
+            var marker_c1ad01275f51653331be2196af1eb08c = L.marker(
+                [23.4518, 120.2554],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_13b4b7985d5acc83e9f75f2c51a64e94 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5609\u7fa9\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_c1ad01275f51653331be2196af1eb08c.setIcon(div_icon_13b4b7985d5acc83e9f75f2c51a64e94);
+            
+    
+            var circle_marker_c4e9b0241e07e3670f0f0ec99ced657a = L.circleMarker(
+                [22.5519, 120.5487],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_0bff6c3ea658277ab13cc0a1c9dab624 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6d340fddd6d1d06a5e291fe92dcacef = $(`<div id="html_c6d340fddd6d1d06a5e291fe92dcacef" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">屏東縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1530</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">70</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1162</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">298</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">165,532</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">9.24</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_0bff6c3ea658277ab13cc0a1c9dab624.setContent(html_c6d340fddd6d1d06a5e291fe92dcacef);
+            
+        
+
+        circle_marker_c4e9b0241e07e3670f0f0ec99ced657a.bindPopup(popup_0bff6c3ea658277ab13cc0a1c9dab624)
+        ;
+
+        
+    
+    
+            var marker_082bd7ecaa975dd9dc8aa700e4112970 = L.marker(
+                [22.5519, 120.5487],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_4305fad461a996df43e634369549fb00 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5c4f\u6771\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_082bd7ecaa975dd9dc8aa700e4112970.setIcon(div_icon_4305fad461a996df43e634369549fb00);
+            
+    
+            var circle_marker_aa3c771dc58b4010358445d51d7ff592 = L.circleMarker(
+                [24.7021, 121.7377],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_b6799491ebfc018c78f5778316f38a86 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_26b32efa7437cc4f29ce62e8662c31ba = $(`<div id="html_26b32efa7437cc4f29ce62e8662c31ba" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">宜蘭縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">690</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">33</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">514</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">143</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">89,618</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.70</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_b6799491ebfc018c78f5778316f38a86.setContent(html_26b32efa7437cc4f29ce62e8662c31ba);
+            
+        
+
+        circle_marker_aa3c771dc58b4010358445d51d7ff592.bindPopup(popup_b6799491ebfc018c78f5778316f38a86)
+        ;
+
+        
+    
+    
+            var marker_2d16827588b4daae9e30522f71f370fe = L.marker(
+                [24.7021, 121.7377],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_618546ebcb9746b40aabb8be9661345f = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5b9c\u862d\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_2d16827588b4daae9e30522f71f370fe.setIcon(div_icon_618546ebcb9746b40aabb8be9661345f);
+            
+    
+            var circle_marker_0afe6b5c1d0c81c15eed1c6b681d9032 = L.circleMarker(
+                [23.9871, 121.6015],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_8217168700548df36aa566a94daa38e1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_22ac0749c0cb6244d21bbaed0a726c9f = $(`<div id="html_22ac0749c0cb6244d21bbaed0a726c9f" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">花蓮縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">464</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">17</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">348</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">99</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">65,112</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.13</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8217168700548df36aa566a94daa38e1.setContent(html_22ac0749c0cb6244d21bbaed0a726c9f);
+            
+        
+
+        circle_marker_0afe6b5c1d0c81c15eed1c6b681d9032.bindPopup(popup_8217168700548df36aa566a94daa38e1)
+        ;
+
+        
+    
+    
+            var marker_dccf83cd179aef5625ffaa008f82828b = L.marker(
+                [23.9871, 121.6015],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_9d99916cbeb5356255dca7ab387170f4 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u82b1\u84ee\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_dccf83cd179aef5625ffaa008f82828b.setIcon(div_icon_9d99916cbeb5356255dca7ab387170f4);
+            
+    
+            var circle_marker_ce5b7bf6f29c43ea8d1830d44c31cb86 = L.circleMarker(
+                [22.7972, 121.0713],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_2bbcd75fe1efad3d009ce83f7555c172 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf1201c6e0d2755cce991470b28be9f4 = $(`<div id="html_cf1201c6e0d2755cce991470b28be9f4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台東縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">467</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">16</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">308</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">143</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">42,284</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">11.04</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_2bbcd75fe1efad3d009ce83f7555c172.setContent(html_cf1201c6e0d2755cce991470b28be9f4);
+            
+        
+
+        circle_marker_ce5b7bf6f29c43ea8d1830d44c31cb86.bindPopup(popup_2bbcd75fe1efad3d009ce83f7555c172)
+        ;
+
+        
+    
+    
+            var marker_c8426c66eb26bb285d0d2e37803ff0b0 = L.marker(
+                [22.7972, 121.0713],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_095f01c3ce6ae1a11d8e4d03cf9e5af6 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u6771\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_c8426c66eb26bb285d0d2e37803ff0b0.setIcon(div_icon_095f01c3ce6ae1a11d8e4d03cf9e5af6);
+            
+    
+            var circle_marker_48e2dcb84f3b9f78029abddf68743934 = L.circleMarker(
+                [23.5712, 119.5793],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.534290669607408, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_8ba8596e9408505b67aee182f25770f0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_177a9e744e7072761890f1d10d3bba54 = $(`<div id="html_177a9e744e7072761890f1d10d3bba54" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">澎湖縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">163</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">9</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">120</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">34</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">21,475</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.59</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8ba8596e9408505b67aee182f25770f0.setContent(html_177a9e744e7072761890f1d10d3bba54);
+            
+        
+
+        circle_marker_48e2dcb84f3b9f78029abddf68743934.bindPopup(popup_8ba8596e9408505b67aee182f25770f0)
+        ;
+
+        
+    
+    
+            var marker_217b032781d314e9a3ea54de21fdfab0 = L.marker(
+                [23.5712, 119.5793],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_0bbde96e9762babf4a818a4a51541f44 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u6f8e\u6e56\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_217b032781d314e9a3ea54de21fdfab0.setIcon(div_icon_0bbde96e9762babf4a818a4a51541f44);
+            
+    
+            var circle_marker_308c324e33e0b4ee5acba1d5ec8568a1 = L.circleMarker(
+                [24.4489, 118.3765],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_e40862135628cd34e04bdfbba5ac6f6b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4cdaaabbe92feed6a853396d28d5c3c8 = $(`<div id="html_4cdaaabbe92feed6a853396d28d5c3c8" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">金門縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">26,206</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">0.00</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_e40862135628cd34e04bdfbba5ac6f6b.setContent(html_4cdaaabbe92feed6a853396d28d5c3c8);
+            
+        
+
+        circle_marker_308c324e33e0b4ee5acba1d5ec8568a1.bindPopup(popup_e40862135628cd34e04bdfbba5ac6f6b)
+        ;
+
+        
+    
+    
+            var marker_ed5cdacd27415d8e4e8f1e232346682a = L.marker(
+                [24.4489, 118.3765],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_34d4884ee6a683d29257531b9fd56e14 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u91d1\u9580\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_ed5cdacd27415d8e4e8f1e232346682a.setIcon(div_icon_34d4884ee6a683d29257531b9fd56e14);
+            
+    
+            var circle_marker_fed0c173b286dc76b03334bf81dc0882 = L.circleMarker(
+                [26.1605, 119.9495],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+        var popup_4ea22b43411e23369880fc99bbb9f60b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72d65d39f056a8a3d25bea0f1b597851 = $(`<div id="html_72d65d39f056a8a3d25bea0f1b597851" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">連江縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">2,244</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">0.00</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_4ea22b43411e23369880fc99bbb9f60b.setContent(html_72d65d39f056a8a3d25bea0f1b597851);
+            
+        
+
+        circle_marker_fed0c173b286dc76b03334bf81dc0882.bindPopup(popup_4ea22b43411e23369880fc99bbb9f60b)
+        ;
+
+        
+    
+    
+            var marker_6105dbe9552872221cdfb434d4513152 = L.marker(
+                [26.1605, 119.9495],
+                {
+}
+            ).addTo(map_8a82e40a50c55360ef6611ceac718b03);
+        
+    
+            var div_icon_04c316ee1cfc101fba02d1170fd5dbc3 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u9023\u6c5f\u7e23\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+                marker_6105dbe9552872221cdfb434d4513152.setIcon(div_icon_04c316ee1cfc101fba02d1170fd5dbc3);
+            
+</script>
+</html>
