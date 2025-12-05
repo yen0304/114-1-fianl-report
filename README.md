@@ -250,10 +250,9 @@ scikit-learn
 ```
 
 ### 執行步驟
-1. 安裝所需套件：`uv pip install pandas numpy matplotlib seaborn scipy scikit-learn`
-2. 確保資料檔案放置於正確位置
-3. 開啟 `population_analysis.ipynb` 並依序執行各 cell
-4. ./114-1-fianl-report/.venv/bin/jupyter nbconvert --to webpdf --no-input population_analysis.ipynb --output final-report.pdf
+1. 安裝所需套件：`uv run playwright install chromium`
+2. uv sync
+3. .venv/bin/jupyter nbconvert --to webpdf --no-input population_analysis.ipynb --output population_analysis
 
 ---
 
