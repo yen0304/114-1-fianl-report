@@ -253,6 +253,7 @@ scikit-learn
 1. 安裝所需套件：`uv run playwright install chromium`
 2. uv sync
 3. .venv/bin/jupyter nbconvert --to webpdf --no-input population_analysis.ipynb --output population_analysis
+3. .venv/bin/jupyter nbconvert --to webpdf population_analysis.ipynb --output population_analysis_with_code
 
 ---
 
