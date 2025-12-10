@@ -17,10 +17,10 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_70a25369b69984b4c2df1de7985a6769 {
+                #map_d5bf107a08155b5ab06230be406b7dee {
                     position: relative;
                     width: 100.0%;
-                    height: 100.0%;
+                    height: 600.0px;
                     left: 0.0%;
                     top: 0.0%;
                 }
@@ -55,42 +55,46 @@
     
     
     <div style="position: fixed; 
-                bottom: 50px; right: 50px; width: 220px; height: 180px; 
+                bottom: 50px; right: 50px; width: 260px; height: 240px; 
                 background-color: white; z-index:9999; font-size:12px;
                 border:2px solid grey; border-radius: 5px; padding: 10px;
                 font-family: 'Noto Sans TC', sans-serif;">
-        <h4 style="margin: 0 0 10px 0;">長照據點密度</h4>
+        <h4 style="margin: 0 0 10px 0;">長照據點密度分級</h4>
+        <p style="margin: 5px 0; font-size: 10px; color: #666;">
+            (採用標準差法，基於統計分布)
+        </p>
         <p style="margin: 5px 0;">
             <i style="background: green; width: 20px; height: 20px; 
                float: left; margin-right: 8px; opacity: 0.6;"></i>
-            充足 (高密度)
+            充足 (> μ + 0.5σ，> 8.26)
         </p>
         <p style="margin: 5px 0;">
             <i style="background: orange; width: 20px; height: 20px; 
                float: left; margin-right: 8px; opacity: 0.6;"></i>
-            中等
+            中等 (μ - 0.5σ ~ μ + 0.5σ)
         </p>
         <p style="margin: 5px 0;">
             <i style="background: red; width: 20px; height: 20px; 
                float: left; margin-right: 8px; opacity: 0.6;"></i>
-            不足 (低密度)
+            不足 (< μ - 0.5σ，≤ 5.83)
         </p>
         <hr style="margin: 10px 0;">
         <p style="margin: 5px 0; font-size: 10px;">
             ● 圓圈大小代表總據點數<br>
-            ● 顏色代表每千位高齡人口據點數
+            ● 顏色代表每千位高齡人口據點數<br>
+            ● μ=7.05, σ=2.43
         </p>
     </div>
     
     
-            <div class="folium-map" id="map_70a25369b69984b4c2df1de7985a6769" ></div>
+            <div class="folium-map" id="map_d5bf107a08155b5ab06230be406b7dee" ></div>
         
 </body>
 <script>
     
     
-            var map_70a25369b69984b4c2df1de7985a6769 = L.map(
-                "map_70a25369b69984b4c2df1de7985a6769",
+            var map_d5bf107a08155b5ab06230be406b7dee = L.map(
+                "map_d5bf107a08155b5ab06230be406b7dee",
                 {
                     center: [23.5, 121.0],
                     crs: L.CRS.EPSG3857,
@@ -107,7 +111,7 @@
 
         
     
-            var tile_layer_4e4c153d4230cfaea24583c43826b2eb = L.tileLayer(
+            var tile_layer_66d826b978c217f82a02533d5dcae4c5 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -124,865 +128,865 @@
             );
         
     
-            tile_layer_4e4c153d4230cfaea24583c43826b2eb.addTo(map_70a25369b69984b4c2df1de7985a6769);
+            tile_layer_66d826b978c217f82a02533d5dcae4c5.addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var circle_marker_44504d8b8e159414c2bfd2939904a7f4 = L.circleMarker(
+            var circle_marker_1528a7038dc5a0a18f10a8165b473ce3 = L.circleMarker(
                 [25.033, 121.5654],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_100c7f202345218d05f89ef792e4299f = L.popup({
+        var popup_48e79a2cd85e7bfe5038e1d48d4a7864 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_381dc8c195e899511c1419c175a2277e = $(`<div id="html_381dc8c195e899511c1419c175a2277e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台北市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">2455</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">107</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2077</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">271</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">574,458</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">4.27</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_100c7f202345218d05f89ef792e4299f.setContent(html_381dc8c195e899511c1419c175a2277e);
+                var html_b5c3284acbdab59a962220125f916648 = $(`<div id="html_b5c3284acbdab59a962220125f916648" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台北市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">2455</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">107</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2077</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">271</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">574,458</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">4.27</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_48e79a2cd85e7bfe5038e1d48d4a7864.setContent(html_b5c3284acbdab59a962220125f916648);
             
         
 
-        circle_marker_44504d8b8e159414c2bfd2939904a7f4.bindPopup(popup_100c7f202345218d05f89ef792e4299f)
+        circle_marker_1528a7038dc5a0a18f10a8165b473ce3.bindPopup(popup_48e79a2cd85e7bfe5038e1d48d4a7864)
         ;
 
         
     
     
-            var marker_28710140d148f538b399ddd403ec7fa9 = L.marker(
+            var marker_61a95ed57462b7a46f853ce45e95d3b5 = L.marker(
                 [25.033, 121.5654],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_000bfddd7dc74b11f2ec893291e8b1da = L.divIcon({
+            var div_icon_59bb988e4613211a2d72b718522d9b67 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u5317\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_28710140d148f538b399ddd403ec7fa9.setIcon(div_icon_000bfddd7dc74b11f2ec893291e8b1da);
+                marker_61a95ed57462b7a46f853ce45e95d3b5.setIcon(div_icon_59bb988e4613211a2d72b718522d9b67);
             
     
-            var circle_marker_97a5259731eaf540a2dca1b017fdb659 = L.circleMarker(
+            var circle_marker_6b92c409bef064d216eb78273c39e7e4 = L.circleMarker(
                 [25.012, 121.4659],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_52dac20227a68bda5649985905fa498d = L.popup({
+        var popup_849a1d02873551fa06b6c61422eb3775 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_c63b60d1aa7fed10b78802f821b98ec6 = $(`<div id="html_c63b60d1aa7fed10b78802f821b98ec6" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新北市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">2892</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">154</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2245</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">493</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">768,492</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">3.76</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_52dac20227a68bda5649985905fa498d.setContent(html_c63b60d1aa7fed10b78802f821b98ec6);
+                var html_bc7b45df60d011cc43d403c6d76650fe = $(`<div id="html_bc7b45df60d011cc43d403c6d76650fe" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新北市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">2892</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">154</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2245</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">493</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">768,492</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">3.76</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_849a1d02873551fa06b6c61422eb3775.setContent(html_bc7b45df60d011cc43d403c6d76650fe);
             
         
 
-        circle_marker_97a5259731eaf540a2dca1b017fdb659.bindPopup(popup_52dac20227a68bda5649985905fa498d)
+        circle_marker_6b92c409bef064d216eb78273c39e7e4.bindPopup(popup_849a1d02873551fa06b6c61422eb3775)
         ;
 
         
     
     
-            var marker_f03309f135697f942c5097f425f0d5bf = L.marker(
+            var marker_94a7da4436083676d1060f18b27f6d4a = L.marker(
                 [25.012, 121.4659],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_8491944ef6138815a09d6dcd2fa1a5ee = L.divIcon({
+            var div_icon_d08a825483988a324049ffc3eb1e4b8a = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u65b0\u5317\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_f03309f135697f942c5097f425f0d5bf.setIcon(div_icon_8491944ef6138815a09d6dcd2fa1a5ee);
+                marker_94a7da4436083676d1060f18b27f6d4a.setIcon(div_icon_d08a825483988a324049ffc3eb1e4b8a);
             
     
-            var circle_marker_f580d594c63b0a5cbaedfd6c7c2996f7 = L.circleMarker(
+            var circle_marker_cac48114f8643ba284334b8b47ac675e = L.circleMarker(
                 [24.9937, 121.301],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_816116ff356d9d8a73f2de4951809e92 = L.popup({
+        var popup_3df02c5d8277eeb828f3076188234611 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_4ff21b2868fcda9153d3e59a55689cf7 = $(`<div id="html_4ff21b2868fcda9153d3e59a55689cf7" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">桃園市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1865</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">76</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1454</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">335</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">371,475</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.02</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_816116ff356d9d8a73f2de4951809e92.setContent(html_4ff21b2868fcda9153d3e59a55689cf7);
+                var html_f7f593151cb90cec003813d29bff2067 = $(`<div id="html_f7f593151cb90cec003813d29bff2067" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">桃園市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1865</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">76</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1454</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">335</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">371,475</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.02</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_3df02c5d8277eeb828f3076188234611.setContent(html_f7f593151cb90cec003813d29bff2067);
             
         
 
-        circle_marker_f580d594c63b0a5cbaedfd6c7c2996f7.bindPopup(popup_816116ff356d9d8a73f2de4951809e92)
+        circle_marker_cac48114f8643ba284334b8b47ac675e.bindPopup(popup_3df02c5d8277eeb828f3076188234611)
         ;
 
         
     
     
-            var marker_d88f205761a29f764a3afdb9d5ff3407 = L.marker(
+            var marker_17234455176984bbab3855e6766078fd = L.marker(
                 [24.9937, 121.301],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_4807c9b4d3a461e19e26674caa70f247 = L.divIcon({
+            var div_icon_22c8974cc6ac4d6eae334b70ff9a2d0b = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u6843\u5712\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_d88f205761a29f764a3afdb9d5ff3407.setIcon(div_icon_4807c9b4d3a461e19e26674caa70f247);
+                marker_17234455176984bbab3855e6766078fd.setIcon(div_icon_22c8974cc6ac4d6eae334b70ff9a2d0b);
             
     
-            var circle_marker_605fae85d94c933b0da5f34983697ef1 = L.circleMarker(
+            var circle_marker_2c7e192263c480a9193ebc3d91d9d402 = L.circleMarker(
                 [24.1477, 120.6736],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_ff7d0ea3febc5832e53e0bd2a0cf3984 = L.popup({
+        var popup_d0aa1a0716e53761642bc4bf478b27c5 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_4476633f4077e417990fabedc93c7603 = $(`<div id="html_4476633f4077e417990fabedc93c7603" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台中市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">3372</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">121</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2880</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">371</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">474,248</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.11</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_ff7d0ea3febc5832e53e0bd2a0cf3984.setContent(html_4476633f4077e417990fabedc93c7603);
+                var html_fc956a0439af4e1ad0aab2dbd77280bf = $(`<div id="html_fc956a0439af4e1ad0aab2dbd77280bf" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台中市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">3372</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">121</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">2880</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">371</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">474,248</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.11</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_d0aa1a0716e53761642bc4bf478b27c5.setContent(html_fc956a0439af4e1ad0aab2dbd77280bf);
             
         
 
-        circle_marker_605fae85d94c933b0da5f34983697ef1.bindPopup(popup_ff7d0ea3febc5832e53e0bd2a0cf3984)
+        circle_marker_2c7e192263c480a9193ebc3d91d9d402.bindPopup(popup_d0aa1a0716e53761642bc4bf478b27c5)
         ;
 
         
     
     
-            var marker_3e24dce65d7c3847ba6c99f564e1ceed = L.marker(
+            var marker_d1cfdadb00b32579e09bb5944caa4012 = L.marker(
                 [24.1477, 120.6736],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_f64413f84b9be38ec16d4b2ccedcf783 = L.divIcon({
+            var div_icon_9381e64da64318d6043d3e6967ac61f5 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u4e2d\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_3e24dce65d7c3847ba6c99f564e1ceed.setIcon(div_icon_f64413f84b9be38ec16d4b2ccedcf783);
+                marker_d1cfdadb00b32579e09bb5944caa4012.setIcon(div_icon_9381e64da64318d6043d3e6967ac61f5);
             
     
-            var circle_marker_fd1fbc86b12e11c697c7b7404251a22d = L.circleMarker(
+            var circle_marker_00c57adba0a96ecd9b00a4bdbc674f2e = L.circleMarker(
                 [22.9998, 120.2269],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_19407b57f49ff302c0cfb39bb98e50d2 = L.popup({
+        var popup_392c58d51455eb917736243a77101987 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_186f869324932af0794d2dc516d66d89 = $(`<div id="html_186f869324932af0794d2dc516d66d89" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台南市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1942</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">57</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1686</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">199</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">364,115</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.33</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_19407b57f49ff302c0cfb39bb98e50d2.setContent(html_186f869324932af0794d2dc516d66d89);
+                var html_9deb81c4aa8ffd2f74fa860e83e0fb43 = $(`<div id="html_9deb81c4aa8ffd2f74fa860e83e0fb43" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台南市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1942</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">57</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1686</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">199</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">364,115</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.33</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_392c58d51455eb917736243a77101987.setContent(html_9deb81c4aa8ffd2f74fa860e83e0fb43);
             
         
 
-        circle_marker_fd1fbc86b12e11c697c7b7404251a22d.bindPopup(popup_19407b57f49ff302c0cfb39bb98e50d2)
+        circle_marker_00c57adba0a96ecd9b00a4bdbc674f2e.bindPopup(popup_392c58d51455eb917736243a77101987)
         ;
 
         
     
     
-            var marker_0d7087c633fcef82027c162f20cefb03 = L.marker(
+            var marker_a2169d08300628b2ce9f755c1500e4d1 = L.marker(
                 [22.9998, 120.2269],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_83d6c81f6c98db202a21a1b3ea3b1f7d = L.divIcon({
+            var div_icon_bad7c6d13964dc57038b3b68c71ec227 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u5357\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_0d7087c633fcef82027c162f20cefb03.setIcon(div_icon_83d6c81f6c98db202a21a1b3ea3b1f7d);
+                marker_a2169d08300628b2ce9f755c1500e4d1.setIcon(div_icon_bad7c6d13964dc57038b3b68c71ec227);
             
     
-            var circle_marker_99abfe58e604d7bb52e1ef4f55e9f678 = L.circleMarker(
+            var circle_marker_8b250ff4b7cb78f16f51d713c46eac32 = L.circleMarker(
                 [22.6273, 120.3014],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_2a3cd5c78915ef32a9090948da3c0710 = L.popup({
+        var popup_0637926c45ad0d15175706557b0b3eed = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_f108d5537271b7430ece638b702ab0ea = $(`<div id="html_f108d5537271b7430ece638b702ab0ea" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">高雄市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">3999</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">82</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">3400</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">517</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">544,267</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.35</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_2a3cd5c78915ef32a9090948da3c0710.setContent(html_f108d5537271b7430ece638b702ab0ea);
+                var html_18696ea0d0e58eb44bdcc0ef9ef5b638 = $(`<div id="html_18696ea0d0e58eb44bdcc0ef9ef5b638" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">高雄市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">3999</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">82</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">3400</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">517</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">544,267</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.35</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_0637926c45ad0d15175706557b0b3eed.setContent(html_18696ea0d0e58eb44bdcc0ef9ef5b638);
             
         
 
-        circle_marker_99abfe58e604d7bb52e1ef4f55e9f678.bindPopup(popup_2a3cd5c78915ef32a9090948da3c0710)
+        circle_marker_8b250ff4b7cb78f16f51d713c46eac32.bindPopup(popup_0637926c45ad0d15175706557b0b3eed)
         ;
 
         
     
     
-            var marker_ebf27df605832b47dc18774b70ea3dfa = L.marker(
+            var marker_a1fdcfc3598df10be2230ffdb050c8f7 = L.marker(
                 [22.6273, 120.3014],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_5064cfd0a5ab817c4604e7b976f28d29 = L.divIcon({
+            var div_icon_ffb351c6a1d433e3014050331c9a9dfc = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u9ad8\u96c4\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_ebf27df605832b47dc18774b70ea3dfa.setIcon(div_icon_5064cfd0a5ab817c4604e7b976f28d29);
+                marker_a1fdcfc3598df10be2230ffdb050c8f7.setIcon(div_icon_ffb351c6a1d433e3014050331c9a9dfc);
             
     
-            var circle_marker_cfe205ca77d20744d1645abfefe733f8 = L.circleMarker(
+            var circle_marker_1f0327f6217831f0724d1fd4d8865774 = L.circleMarker(
                 [25.1276, 121.7392],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_c2150b3004375d554b81954c2760ead7 = L.popup({
+        var popup_279fb003f98ce404701bb337022cddc1 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_13165c332e0dd65a9e0acf7cfa3f5553 = $(`<div id="html_13165c332e0dd65a9e0acf7cfa3f5553" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">基隆市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">332</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">12</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">259</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">61</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">76,844</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">4.32</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_c2150b3004375d554b81954c2760ead7.setContent(html_13165c332e0dd65a9e0acf7cfa3f5553);
+                var html_c498a0aa99738920871b936565301f4d = $(`<div id="html_c498a0aa99738920871b936565301f4d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">基隆市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">332</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">12</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">259</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">61</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">76,844</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">4.32</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_279fb003f98ce404701bb337022cddc1.setContent(html_c498a0aa99738920871b936565301f4d);
             
         
 
-        circle_marker_cfe205ca77d20744d1645abfefe733f8.bindPopup(popup_c2150b3004375d554b81954c2760ead7)
+        circle_marker_1f0327f6217831f0724d1fd4d8865774.bindPopup(popup_279fb003f98ce404701bb337022cddc1)
         ;
 
         
     
     
-            var marker_c625bde24fbdbe809e8112e98aa04190 = L.marker(
+            var marker_463a2e578a68196aa7371f3ed0adb7a2 = L.marker(
                 [25.1276, 121.7392],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_160a64967fe6813f74008af77f5185bd = L.divIcon({
+            var div_icon_4d1c2c74eff28a84b2318e19f89e36e6 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u57fa\u9686\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_c625bde24fbdbe809e8112e98aa04190.setIcon(div_icon_160a64967fe6813f74008af77f5185bd);
+                marker_463a2e578a68196aa7371f3ed0adb7a2.setIcon(div_icon_4d1c2c74eff28a84b2318e19f89e36e6);
             
     
-            var circle_marker_2bc9c1b47e53800cf1d64ed0f09f0b4a = L.circleMarker(
+            var circle_marker_0189e3e8a8462a9098e2fad593e627a5 = L.circleMarker(
                 [24.8138, 120.9675],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_9720fc27f01e499b459ad8af13931665 = L.popup({
+        var popup_594f74e5bd583132ac36fcdecf34dfe8 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_2e6e8dd930208a6f20297796252c6a59 = $(`<div id="html_2e6e8dd930208a6f20297796252c6a59" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新竹市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">561</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">22</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">474</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">65</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">70,383</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_9720fc27f01e499b459ad8af13931665.setContent(html_2e6e8dd930208a6f20297796252c6a59);
+                var html_0fff3fd011146c75eb5f68e07082edae = $(`<div id="html_0fff3fd011146c75eb5f68e07082edae" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新竹市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">561</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">22</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">474</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">65</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">70,383</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_594f74e5bd583132ac36fcdecf34dfe8.setContent(html_0fff3fd011146c75eb5f68e07082edae);
             
         
 
-        circle_marker_2bc9c1b47e53800cf1d64ed0f09f0b4a.bindPopup(popup_9720fc27f01e499b459ad8af13931665)
+        circle_marker_0189e3e8a8462a9098e2fad593e627a5.bindPopup(popup_594f74e5bd583132ac36fcdecf34dfe8)
         ;
 
         
     
     
-            var marker_b0995eb69e1ab48eea424c520116a6c2 = L.marker(
+            var marker_03c3aac67ffab0f19194aec7ab6bf3d2 = L.marker(
                 [24.8138, 120.9675],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_1e9c07251eba58b52d30f7e84d6cefe9 = L.divIcon({
+            var div_icon_136831ffb6b4ef2f7de850a02b2edc5d = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u65b0\u7af9\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_b0995eb69e1ab48eea424c520116a6c2.setIcon(div_icon_1e9c07251eba58b52d30f7e84d6cefe9);
+                marker_03c3aac67ffab0f19194aec7ab6bf3d2.setIcon(div_icon_136831ffb6b4ef2f7de850a02b2edc5d);
             
     
-            var circle_marker_6be6ec3631e1fff1b264fb0499123700 = L.circleMarker(
+            var circle_marker_32132edfbf97526c05bcfa0f9e069656 = L.circleMarker(
                 [24.8387, 121.0177],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_673058e6591bb071869e96f28ab29dd3 = L.popup({
+        var popup_6b4801aebaab0834bb9d48952c706af5 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_6a443efee78312cd00b0b54a96172e09 = $(`<div id="html_6a443efee78312cd00b0b54a96172e09" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新竹縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">772</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">24</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">620</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">128</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">86,088</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">8.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_673058e6591bb071869e96f28ab29dd3.setContent(html_6a443efee78312cd00b0b54a96172e09);
+                var html_03734c22a67b156c95a560b7828ea7ea = $(`<div id="html_03734c22a67b156c95a560b7828ea7ea" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">新竹縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">772</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">24</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">620</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">128</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">86,088</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">8.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6b4801aebaab0834bb9d48952c706af5.setContent(html_03734c22a67b156c95a560b7828ea7ea);
             
         
 
-        circle_marker_6be6ec3631e1fff1b264fb0499123700.bindPopup(popup_673058e6591bb071869e96f28ab29dd3)
+        circle_marker_32132edfbf97526c05bcfa0f9e069656.bindPopup(popup_6b4801aebaab0834bb9d48952c706af5)
         ;
 
         
     
     
-            var marker_05c7bb6307ba1136a17ca29b2522c1c0 = L.marker(
+            var marker_3d9a4fc959477f88db137fe37a4d2394 = L.marker(
                 [24.8387, 121.0177],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_6b88184837af470d0e394a45eda10058 = L.divIcon({
+            var div_icon_490c36a7632a9c2ff5518171a62d2e00 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u65b0\u7af9\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_05c7bb6307ba1136a17ca29b2522c1c0.setIcon(div_icon_6b88184837af470d0e394a45eda10058);
+                marker_3d9a4fc959477f88db137fe37a4d2394.setIcon(div_icon_490c36a7632a9c2ff5518171a62d2e00);
             
     
-            var circle_marker_06ef3c31d3b27509e1fef69e7c7ba4f1 = L.circleMarker(
+            var circle_marker_e46095a89f13898dd2169dfa9feb40f4 = L.circleMarker(
                 [24.5602, 120.8214],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_995086709503fd7b831821312efd317a = L.popup({
+        var popup_6834714ad319e4e028200483096754a8 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_3913d7d1e3a0539f0bc8fe5c757a9c87 = $(`<div id="html_3913d7d1e3a0539f0bc8fe5c757a9c87" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">苗栗縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">589</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">70</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">401</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">118</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">104,168</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.65</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_995086709503fd7b831821312efd317a.setContent(html_3913d7d1e3a0539f0bc8fe5c757a9c87);
+                var html_4978156cdf75c6db36bb84d560ad1408 = $(`<div id="html_4978156cdf75c6db36bb84d560ad1408" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">苗栗縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">589</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">70</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">401</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">118</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">104,168</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.65</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6834714ad319e4e028200483096754a8.setContent(html_4978156cdf75c6db36bb84d560ad1408);
             
         
 
-        circle_marker_06ef3c31d3b27509e1fef69e7c7ba4f1.bindPopup(popup_995086709503fd7b831821312efd317a)
+        circle_marker_e46095a89f13898dd2169dfa9feb40f4.bindPopup(popup_6834714ad319e4e028200483096754a8)
         ;
 
         
     
     
-            var marker_f40de45fccdc08395b1ef270974d7add = L.marker(
+            var marker_72011c6e1de2e81ff8ebe57a4f3ecf42 = L.marker(
                 [24.5602, 120.8214],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_cfb211ed5da9ccea78fe82219af1f737 = L.divIcon({
+            var div_icon_235986399213a5c47465b7588189916b = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u82d7\u6817\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_f40de45fccdc08395b1ef270974d7add.setIcon(div_icon_cfb211ed5da9ccea78fe82219af1f737);
+                marker_72011c6e1de2e81ff8ebe57a4f3ecf42.setIcon(div_icon_235986399213a5c47465b7588189916b);
             
     
-            var circle_marker_8be23bf54a09f551340b1c9a6d7a5f54 = L.circleMarker(
+            var circle_marker_fe7c1888b8cc076f33fab5150a69c6e5 = L.circleMarker(
                 [24.0518, 120.5161],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_7be3c5b9eec18ae904a45441fc8b6e73 = L.popup({
+        var popup_a8e13cdac5c078b56fc4ab9ed90dfda3 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_ac60c2fc9fc3934ecb70b6c447624fa7 = $(`<div id="html_ac60c2fc9fc3934ecb70b6c447624fa7" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">彰化縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1426</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">17</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1066</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">343</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">238,924</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_7be3c5b9eec18ae904a45441fc8b6e73.setContent(html_ac60c2fc9fc3934ecb70b6c447624fa7);
+                var html_59f77d866c9c9a188f53563392193987 = $(`<div id="html_59f77d866c9c9a188f53563392193987" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">彰化縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1426</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">17</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1066</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">343</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">238,924</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.97</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_a8e13cdac5c078b56fc4ab9ed90dfda3.setContent(html_59f77d866c9c9a188f53563392193987);
             
         
 
-        circle_marker_8be23bf54a09f551340b1c9a6d7a5f54.bindPopup(popup_7be3c5b9eec18ae904a45441fc8b6e73)
+        circle_marker_fe7c1888b8cc076f33fab5150a69c6e5.bindPopup(popup_a8e13cdac5c078b56fc4ab9ed90dfda3)
         ;
 
         
     
     
-            var marker_3b24f4dc52f92d8638e5d3cd850793fa = L.marker(
+            var marker_f4a6a6b68d6897425819c6fa4c286ea7 = L.marker(
                 [24.0518, 120.5161],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_ddfcfd68782c3aa52ee0032104e8eb62 = L.divIcon({
+            var div_icon_3c40fa497399889fd42162128cd88738 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5f70\u5316\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_3b24f4dc52f92d8638e5d3cd850793fa.setIcon(div_icon_ddfcfd68782c3aa52ee0032104e8eb62);
+                marker_f4a6a6b68d6897425819c6fa4c286ea7.setIcon(div_icon_3c40fa497399889fd42162128cd88738);
             
     
-            var circle_marker_9d0112c4cf4061864a5c25f028e25266 = L.circleMarker(
+            var circle_marker_ffe7f00d1e9a52dd3f6ef2f9fd4f10bf = L.circleMarker(
                 [23.9609, 120.9719],
                 {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_f4ab31d7b4c4cae936b99eabc0218e68 = L.popup({
+        var popup_49a902fa2e20f05169107effa2b459b6 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_d60b055e6dffb01b089cf49eb0afb55b = $(`<div id="html_d60b055e6dffb01b089cf49eb0afb55b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">南投縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1099</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">23</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">928</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">148</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">102,680</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">10.70</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_f4ab31d7b4c4cae936b99eabc0218e68.setContent(html_d60b055e6dffb01b089cf49eb0afb55b);
+                var html_f1c6eed9c087d1b791a08abf6bf3715d = $(`<div id="html_f1c6eed9c087d1b791a08abf6bf3715d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">南投縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1099</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">23</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">928</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">148</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">102,680</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">10.70</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_49a902fa2e20f05169107effa2b459b6.setContent(html_f1c6eed9c087d1b791a08abf6bf3715d);
             
         
 
-        circle_marker_9d0112c4cf4061864a5c25f028e25266.bindPopup(popup_f4ab31d7b4c4cae936b99eabc0218e68)
+        circle_marker_ffe7f00d1e9a52dd3f6ef2f9fd4f10bf.bindPopup(popup_49a902fa2e20f05169107effa2b459b6)
         ;
 
         
     
     
-            var marker_b7bd627d385f4e2b5c31509b935a8300 = L.marker(
+            var marker_d769668aaba6dd6cc331491fa49f6367 = L.marker(
                 [23.9609, 120.9719],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_9f13413f6052a6b168ef132ed81199fd = L.divIcon({
+            var div_icon_befdcc34a1814aae4ec889b2805d9bb3 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5357\u6295\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_b7bd627d385f4e2b5c31509b935a8300.setIcon(div_icon_9f13413f6052a6b168ef132ed81199fd);
+                marker_d769668aaba6dd6cc331491fa49f6367.setIcon(div_icon_befdcc34a1814aae4ec889b2805d9bb3);
             
     
-            var circle_marker_551819c952cd3617b576b4f7dc552e6b = L.circleMarker(
+            var circle_marker_e4a4872062d2160db336acc4922ef91c = L.circleMarker(
                 [23.7092, 120.4313],
-                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_24d91427ddc863598d4515256ee85a74 = L.popup({
+        var popup_e735166b290d197239db7934b61f8087 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_3c3c6f121dfcb5f531973098e2748743 = $(`<div id="html_3c3c6f121dfcb5f531973098e2748743" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">雲林縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">746</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">36</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">576</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">134</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">138,929</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.37</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_24d91427ddc863598d4515256ee85a74.setContent(html_3c3c6f121dfcb5f531973098e2748743);
+                var html_1b8c6b9c6dfc5326daaeaa43d5d35ba7 = $(`<div id="html_1b8c6b9c6dfc5326daaeaa43d5d35ba7" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">雲林縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">746</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">36</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">576</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">134</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">138,929</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">5.37</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_e735166b290d197239db7934b61f8087.setContent(html_1b8c6b9c6dfc5326daaeaa43d5d35ba7);
             
         
 
-        circle_marker_551819c952cd3617b576b4f7dc552e6b.bindPopup(popup_24d91427ddc863598d4515256ee85a74)
+        circle_marker_e4a4872062d2160db336acc4922ef91c.bindPopup(popup_e735166b290d197239db7934b61f8087)
         ;
 
         
     
     
-            var marker_41f29ddbf9177b4eeca7c0dae7c27da3 = L.marker(
+            var marker_c29e897773e153fa086f62817cb69c80 = L.marker(
                 [23.7092, 120.4313],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_54a0eae3fb3ad6e4e446ef08a7e4acfb = L.divIcon({
+            var div_icon_6ab84e4b6a2c3803417f1c51a9892f81 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u96f2\u6797\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_41f29ddbf9177b4eeca7c0dae7c27da3.setIcon(div_icon_54a0eae3fb3ad6e4e446ef08a7e4acfb);
+                marker_c29e897773e153fa086f62817cb69c80.setIcon(div_icon_6ab84e4b6a2c3803417f1c51a9892f81);
             
     
-            var circle_marker_dfffb0825299293e95d954971e3a54d4 = L.circleMarker(
+            var circle_marker_4936f1ac22830d809f783cbb4c78c9cb = L.circleMarker(
                 [23.4801, 120.4491],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_19fc816ce93dcc37bee0d2cc78d5af2c = L.popup({
+        var popup_ba49e3432cd3b8551ccd9b6efd9a744f = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_6a1393b6a13b4a467711cfcfd98bc1dd = $(`<div id="html_6a1393b6a13b4a467711cfcfd98bc1dd" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">嘉義市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">353</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">15</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">279</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">59</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">50,101</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.05</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_19fc816ce93dcc37bee0d2cc78d5af2c.setContent(html_6a1393b6a13b4a467711cfcfd98bc1dd);
+                var html_201a828abf321a9e4c9a39030f2bc99a = $(`<div id="html_201a828abf321a9e4c9a39030f2bc99a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">嘉義市</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">353</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">15</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">279</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">59</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">50,101</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.05</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_ba49e3432cd3b8551ccd9b6efd9a744f.setContent(html_201a828abf321a9e4c9a39030f2bc99a);
             
         
 
-        circle_marker_dfffb0825299293e95d954971e3a54d4.bindPopup(popup_19fc816ce93dcc37bee0d2cc78d5af2c)
+        circle_marker_4936f1ac22830d809f783cbb4c78c9cb.bindPopup(popup_ba49e3432cd3b8551ccd9b6efd9a744f)
         ;
 
         
     
     
-            var marker_8dd5369f6f0edfe51418d3c2aab5271d = L.marker(
+            var marker_58e59cc51c02ebe0bc8255086fdc7c65 = L.marker(
                 [23.4801, 120.4491],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_87eb4a89b2e9cb8223c3e1901b5df396 = L.divIcon({
+            var div_icon_e1abc6e91f3d59c4e6b8f316ae2473d5 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5609\u7fa9\u5e02\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_8dd5369f6f0edfe51418d3c2aab5271d.setIcon(div_icon_87eb4a89b2e9cb8223c3e1901b5df396);
+                marker_58e59cc51c02ebe0bc8255086fdc7c65.setIcon(div_icon_e1abc6e91f3d59c4e6b8f316ae2473d5);
             
     
-            var circle_marker_a152de592439d607a84ed570d0fbe308 = L.circleMarker(
+            var circle_marker_1393386c98554a29302fce70f36ce82e = L.circleMarker(
                 [23.4518, 120.2554],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_0d3a51e95f65274a517a6f5c3dcdccc2 = L.popup({
+        var popup_0d8e2f0d3ba65f17b13eda3c724cc006 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_0915eef2a09e7e23a11ed0346d8baac9 = $(`<div id="html_0915eef2a09e7e23a11ed0346d8baac9" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">嘉義縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">752</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">18</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">485</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">249</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">111,064</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">6.77</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_0d3a51e95f65274a517a6f5c3dcdccc2.setContent(html_0915eef2a09e7e23a11ed0346d8baac9);
+                var html_1f4323d79bafebcb599022a25e9451dc = $(`<div id="html_1f4323d79bafebcb599022a25e9451dc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">嘉義縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">752</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">18</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">485</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">249</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">111,064</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">6.77</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_0d8e2f0d3ba65f17b13eda3c724cc006.setContent(html_1f4323d79bafebcb599022a25e9451dc);
             
         
 
-        circle_marker_a152de592439d607a84ed570d0fbe308.bindPopup(popup_0d3a51e95f65274a517a6f5c3dcdccc2)
+        circle_marker_1393386c98554a29302fce70f36ce82e.bindPopup(popup_0d8e2f0d3ba65f17b13eda3c724cc006)
         ;
 
         
     
     
-            var marker_0032596d01a4486ee801a20d43a9682f = L.marker(
+            var marker_223c7d01f66e6af0c93de165429bec94 = L.marker(
                 [23.4518, 120.2554],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_32ea3b539e472d862b9840c29d811417 = L.divIcon({
+            var div_icon_62f60fb1fa918b69ff9b881f6e09c12d = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5609\u7fa9\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_0032596d01a4486ee801a20d43a9682f.setIcon(div_icon_32ea3b539e472d862b9840c29d811417);
+                marker_223c7d01f66e6af0c93de165429bec94.setIcon(div_icon_62f60fb1fa918b69ff9b881f6e09c12d);
             
     
-            var circle_marker_0bfc851ff5bba513b12c2ec5c55b5077 = L.circleMarker(
+            var circle_marker_712e5641ca2f1afc40bd415170753c85 = L.circleMarker(
                 [22.5519, 120.5487],
                 {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_aad231434c1f6062f4fdb1d3847e27b7 = L.popup({
+        var popup_cf4ccefee2886e6f34bec355ac8f66e2 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_b62806a02ac57cda49afc0b904ef3ce4 = $(`<div id="html_b62806a02ac57cda49afc0b904ef3ce4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">屏東縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1530</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">70</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1162</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">298</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">165,532</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">9.24</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_aad231434c1f6062f4fdb1d3847e27b7.setContent(html_b62806a02ac57cda49afc0b904ef3ce4);
+                var html_87a0d596b113d4ffca23bf9aa81679a5 = $(`<div id="html_87a0d596b113d4ffca23bf9aa81679a5" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">屏東縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">1530</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">70</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">1162</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">298</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">165,532</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">9.24</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_cf4ccefee2886e6f34bec355ac8f66e2.setContent(html_87a0d596b113d4ffca23bf9aa81679a5);
             
         
 
-        circle_marker_0bfc851ff5bba513b12c2ec5c55b5077.bindPopup(popup_aad231434c1f6062f4fdb1d3847e27b7)
+        circle_marker_712e5641ca2f1afc40bd415170753c85.bindPopup(popup_cf4ccefee2886e6f34bec355ac8f66e2)
         ;
 
         
     
     
-            var marker_c0cb2d05b088ea3800b99f92691a8121 = L.marker(
+            var marker_afa957389c6871a4638e67c978c07c77 = L.marker(
                 [22.5519, 120.5487],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_3a0398e7287bed35f0cbca686325e8a6 = L.divIcon({
+            var div_icon_16bf9cda2ac1b2a64cde17231b7cecbe = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5c4f\u6771\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_c0cb2d05b088ea3800b99f92691a8121.setIcon(div_icon_3a0398e7287bed35f0cbca686325e8a6);
+                marker_afa957389c6871a4638e67c978c07c77.setIcon(div_icon_16bf9cda2ac1b2a64cde17231b7cecbe);
             
     
-            var circle_marker_618c5321f1f758d42d04da5f64725241 = L.circleMarker(
+            var circle_marker_9c10feac1521e107f817b66eb0b4f662 = L.circleMarker(
                 [24.7021, 121.7377],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_0104b9bcdd13d87b80334889b62ba8f1 = L.popup({
+        var popup_8b880f819ebd0378a392535160726c1a = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_52fe89400013f325df3e73f4c1d0e9da = $(`<div id="html_52fe89400013f325df3e73f4c1d0e9da" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">宜蘭縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">690</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">33</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">514</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">143</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">89,618</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.70</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_0104b9bcdd13d87b80334889b62ba8f1.setContent(html_52fe89400013f325df3e73f4c1d0e9da);
+                var html_78d790688c765c5359c3eb36e07c5618 = $(`<div id="html_78d790688c765c5359c3eb36e07c5618" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">宜蘭縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">690</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">33</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">514</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">143</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">89,618</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.70</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8b880f819ebd0378a392535160726c1a.setContent(html_78d790688c765c5359c3eb36e07c5618);
             
         
 
-        circle_marker_618c5321f1f758d42d04da5f64725241.bindPopup(popup_0104b9bcdd13d87b80334889b62ba8f1)
+        circle_marker_9c10feac1521e107f817b66eb0b4f662.bindPopup(popup_8b880f819ebd0378a392535160726c1a)
         ;
 
         
     
     
-            var marker_92ff4cd5f851506d32d850450fb14cca = L.marker(
+            var marker_c3027ad01601cd5230a46c872690d300 = L.marker(
                 [24.7021, 121.7377],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_fc7b2f1a3593b467320c760f04e7363a = L.divIcon({
+            var div_icon_968d906985252cf638b096fa27125d19 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u5b9c\u862d\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_92ff4cd5f851506d32d850450fb14cca.setIcon(div_icon_fc7b2f1a3593b467320c760f04e7363a);
+                marker_c3027ad01601cd5230a46c872690d300.setIcon(div_icon_968d906985252cf638b096fa27125d19);
             
     
-            var circle_marker_192b8a59273da858fc609037b72a85e2 = L.circleMarker(
+            var circle_marker_71081ee1c00490c3aa945610f5d0827c = L.circleMarker(
                 [23.9871, 121.6015],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_a8744a784ed492c4cd23454fe4ab3743 = L.popup({
+        var popup_2895ace77d6009623fdf4770c7dde900 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_80ca58b55c2ddba45536fe607339a6b5 = $(`<div id="html_80ca58b55c2ddba45536fe607339a6b5" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">花蓮縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">464</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">17</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">348</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">99</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">65,112</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.13</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_a8744a784ed492c4cd23454fe4ab3743.setContent(html_80ca58b55c2ddba45536fe607339a6b5);
+                var html_d5bc61d283df9d6a6c3a464e4d10dddc = $(`<div id="html_d5bc61d283df9d6a6c3a464e4d10dddc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">花蓮縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">464</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">17</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">348</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">99</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">65,112</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.13</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_2895ace77d6009623fdf4770c7dde900.setContent(html_d5bc61d283df9d6a6c3a464e4d10dddc);
             
         
 
-        circle_marker_192b8a59273da858fc609037b72a85e2.bindPopup(popup_a8744a784ed492c4cd23454fe4ab3743)
+        circle_marker_71081ee1c00490c3aa945610f5d0827c.bindPopup(popup_2895ace77d6009623fdf4770c7dde900)
         ;
 
         
     
     
-            var marker_2df07f6167fb92a45fc1ae775ff25f49 = L.marker(
+            var marker_9ab27157b75b5335b07c01c7c9e03276 = L.marker(
                 [23.9871, 121.6015],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_5c5df72b123116df2aafee4fb80d3ee7 = L.divIcon({
+            var div_icon_75c50063f9448b8ace8055e263dd3fb7 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u82b1\u84ee\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_2df07f6167fb92a45fc1ae775ff25f49.setIcon(div_icon_5c5df72b123116df2aafee4fb80d3ee7);
+                marker_9ab27157b75b5335b07c01c7c9e03276.setIcon(div_icon_75c50063f9448b8ace8055e263dd3fb7);
             
     
-            var circle_marker_e66b07465917c193d88949fe05a0f4ba = L.circleMarker(
+            var circle_marker_cfc089dcf4b0a2c00024dcc20566a296 = L.circleMarker(
                 [22.7972, 121.0713],
                 {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_04fc24e21544e944cead043772c97db5 = L.popup({
+        var popup_65abaa3c809f0984cd5c1c89bc04ca3c = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_86b65b47ae0bb8f7ad83cef653ecf4d4 = $(`<div id="html_86b65b47ae0bb8f7ad83cef653ecf4d4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台東縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">467</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">16</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">308</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">143</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">42,284</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">11.04</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_04fc24e21544e944cead043772c97db5.setContent(html_86b65b47ae0bb8f7ad83cef653ecf4d4);
+                var html_691cf23fa2f009b1ffaed8063a4d604b = $(`<div id="html_691cf23fa2f009b1ffaed8063a4d604b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">台東縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">467</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">16</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">308</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">143</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">42,284</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">11.04</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_65abaa3c809f0984cd5c1c89bc04ca3c.setContent(html_691cf23fa2f009b1ffaed8063a4d604b);
             
         
 
-        circle_marker_e66b07465917c193d88949fe05a0f4ba.bindPopup(popup_04fc24e21544e944cead043772c97db5)
+        circle_marker_cfc089dcf4b0a2c00024dcc20566a296.bindPopup(popup_65abaa3c809f0984cd5c1c89bc04ca3c)
         ;
 
         
     
     
-            var marker_82855c76e32eb8237834614f1dce63b2 = L.marker(
+            var marker_0e78a39cdc8df97076b9a2bc58626507 = L.marker(
                 [22.7972, 121.0713],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_139aa955693e027232aff43cba97ba47 = L.divIcon({
+            var div_icon_bae9741ee782a1324dbda8b814bb15f0 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u53f0\u6771\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_82855c76e32eb8237834614f1dce63b2.setIcon(div_icon_139aa955693e027232aff43cba97ba47);
+                marker_0e78a39cdc8df97076b9a2bc58626507.setIcon(div_icon_bae9741ee782a1324dbda8b814bb15f0);
             
     
-            var circle_marker_ad8db1065d790b7fc1503389ab556dac = L.circleMarker(
+            var circle_marker_982a14af824ade2c492786c17c35cc93 = L.circleMarker(
                 [23.5712, 119.5793],
                 {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.534290669607408, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_b92b461133eadd72b8ec3fb269b2869d = L.popup({
+        var popup_8a013c8a54d5a009e44f0da90c126fcc = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_e7dc1b40495402a28b650bd8fedf115a = $(`<div id="html_e7dc1b40495402a28b650bd8fedf115a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">澎湖縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">163</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">9</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">120</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">34</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">21,475</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.59</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_b92b461133eadd72b8ec3fb269b2869d.setContent(html_e7dc1b40495402a28b650bd8fedf115a);
+                var html_9e65086c3ad74bf3a21328bdfe8771ce = $(`<div id="html_9e65086c3ad74bf3a21328bdfe8771ce" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">澎湖縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">163</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">9</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">120</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">34</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">21,475</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">7.59</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8a013c8a54d5a009e44f0da90c126fcc.setContent(html_9e65086c3ad74bf3a21328bdfe8771ce);
             
         
 
-        circle_marker_ad8db1065d790b7fc1503389ab556dac.bindPopup(popup_b92b461133eadd72b8ec3fb269b2869d)
+        circle_marker_982a14af824ade2c492786c17c35cc93.bindPopup(popup_8a013c8a54d5a009e44f0da90c126fcc)
         ;
 
         
     
     
-            var marker_99e0ba29e332b1f3affb1cea0bf733bb = L.marker(
+            var marker_952701d6a7936a99b28ba2f0f80fbcdb = L.marker(
                 [23.5712, 119.5793],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_828f127f6af47a7f7dfca45c3c8a71e7 = L.divIcon({
+            var div_icon_be7a7f9c22aeb169a5405e57908a5bc8 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u6f8e\u6e56\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_99e0ba29e332b1f3affb1cea0bf733bb.setIcon(div_icon_828f127f6af47a7f7dfca45c3c8a71e7);
+                marker_952701d6a7936a99b28ba2f0f80fbcdb.setIcon(div_icon_be7a7f9c22aeb169a5405e57908a5bc8);
             
     
-            var circle_marker_4b2f436a69e2c71fce754625761c3665 = L.circleMarker(
+            var circle_marker_acdeb60f495c9c80150e03a5747ca902 = L.circleMarker(
                 [24.4489, 118.3765],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.8997487421324, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_dacf7bc4f725e69081e05fc28a792931 = L.popup({
+        var popup_f8161b52eea3b2298c5041b00f81f83a = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_d5bf1a648eb628204a6851ef40d9123a = $(`<div id="html_d5bf1a648eb628204a6851ef40d9123a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">金門縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">99</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">2</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">76</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">21</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">26,206</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">3.78</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_dacf7bc4f725e69081e05fc28a792931.setContent(html_d5bf1a648eb628204a6851ef40d9123a);
+                var html_9ea8f5ef6616b5adf0dc6a1c32c89c32 = $(`<div id="html_9ea8f5ef6616b5adf0dc6a1c32c89c32" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">金門縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">99</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">2</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">76</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">21</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">26,206</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">3.78</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_f8161b52eea3b2298c5041b00f81f83a.setContent(html_9ea8f5ef6616b5adf0dc6a1c32c89c32);
             
         
 
-        circle_marker_4b2f436a69e2c71fce754625761c3665.bindPopup(popup_dacf7bc4f725e69081e05fc28a792931)
+        circle_marker_acdeb60f495c9c80150e03a5747ca902.bindPopup(popup_f8161b52eea3b2298c5041b00f81f83a)
         ;
 
         
     
     
-            var marker_e0260b57523739eb92dbd694b5a424ae = L.marker(
+            var marker_134f93733a3f80052f2ec0da1fa816e6 = L.marker(
                 [24.4489, 118.3765],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_25fccc8497948d15dc9c99040dbfb091 = L.divIcon({
+            var div_icon_a5ff13cea87edb34bb15b974e331dc57 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u91d1\u9580\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_e0260b57523739eb92dbd694b5a424ae.setIcon(div_icon_25fccc8497948d15dc9c99040dbfb091);
+                marker_134f93733a3f80052f2ec0da1fa816e6.setIcon(div_icon_a5ff13cea87edb34bb15b974e331dc57);
             
     
-            var circle_marker_ee7d2fc476c722833bff941cbda34a7c = L.circleMarker(
+            var circle_marker_3274817f6a622580c59867cb4210a48b = L.circleMarker(
                 [26.1605, 119.9495],
                 {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.770329614269007, "stroke": true, "weight": 2}
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-        var popup_21a2ba1b74f5d8afa9323e593a48e4df = L.popup({
+        var popup_3e30bcdfd51fafe6936a2fa91bab1857 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_dc3528f8b9afe6a45f0ca8706e4cc6c5 = $(`<div id="html_dc3528f8b9afe6a45f0ca8706e4cc6c5" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">連江縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">29</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">26</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">3</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">2,244</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">12.92</td>                     </tr>                 </table>             </div>             </div>`)[0];
-                popup_21a2ba1b74f5d8afa9323e593a48e4df.setContent(html_dc3528f8b9afe6a45f0ca8706e4cc6c5);
+                var html_b157677654113c9af3a1184e60e34c0a = $(`<div id="html_b157677654113c9af3a1184e60e34c0a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Noto Sans TC', sans-serif; width: 200px;">                 <h4 style="margin: 0 0 10px 0; color: #2c3e50;">連江縣</h4>                 <table style="width: 100%; border-collapse: collapse;">                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>總據點數</b></td>                         <td style="padding: 5px; text-align: right;">29</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　A級據點</td>                         <td style="padding: 5px; text-align: right;">0</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;">　B級據點</td>                         <td style="padding: 5px; text-align: right;">26</td>                     </tr>                     <tr>                         <td style="padding: 5px;">　C級據點</td>                         <td style="padding: 5px; text-align: right;">3</td>                     </tr>                     <tr style="background-color: #ecf0f1;">                         <td style="padding: 5px;"><b>65歲以上人口</b></td>                         <td style="padding: 5px; text-align: right;">2,244</td>                     </tr>                     <tr>                         <td style="padding: 5px;"><b>每千位據點數</b></td>                         <td style="padding: 5px; text-align: right;">12.92</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_3e30bcdfd51fafe6936a2fa91bab1857.setContent(html_b157677654113c9af3a1184e60e34c0a);
             
         
 
-        circle_marker_ee7d2fc476c722833bff941cbda34a7c.bindPopup(popup_21a2ba1b74f5d8afa9323e593a48e4df)
+        circle_marker_3274817f6a622580c59867cb4210a48b.bindPopup(popup_3e30bcdfd51fafe6936a2fa91bab1857)
         ;
 
         
     
     
-            var marker_5f52391bd328bf6c1085a2626e92c606 = L.marker(
+            var marker_8f84bd15540c37334e46004eaa2ed64e = L.marker(
                 [26.1605, 119.9495],
                 {
 }
-            ).addTo(map_70a25369b69984b4c2df1de7985a6769);
+            ).addTo(map_d5bf107a08155b5ab06230be406b7dee);
         
     
-            var div_icon_45d11565a68e137f61d5eeb0ad4af851 = L.divIcon({
+            var div_icon_124ceff11e0634ef80fa431a08ce50d5 = L.divIcon({
   "html": "\n                    \u003cdiv style=\"font-size: 10pt; color: black; font-weight: bold; \n                         text-shadow: 1px 1px 2px white, -1px -1px 2px white;\"\u003e\n                        \u9023\u6c5f\u7e23\n                    \u003c/div\u003e\n                ",
   "className": "empty",
 });
         
     
-                marker_5f52391bd328bf6c1085a2626e92c606.setIcon(div_icon_45d11565a68e137f61d5eeb0ad4af851);
+                marker_8f84bd15540c37334e46004eaa2ed64e.setIcon(div_icon_124ceff11e0634ef80fa431a08ce50d5);
             
 </script>
 </html>
